@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import {useEffect} from 'react';
+
+const API_URL = "http://www.omdbapi.com/?apikey=943cc970";
+
+const App = () => {
+
+  const searchMovies = async (title) => {
+    const response = await fetch(`${API_URL}&s=${title}`);
+    const data = await response.json();
+
+    console.log(data.Search);
+  }
+
+  useEffect(() => {
+    searchMovies('Spiderman');
+
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          {5*8}
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+     <div className="App">
+     <h1>Hello React</h1>
     </div>
   );
 }
